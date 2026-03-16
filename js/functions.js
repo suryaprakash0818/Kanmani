@@ -42,6 +42,7 @@ function getHeartPoint(angle) {
 	return new Array(offsetX + x, offsetY + y);
 }
 
+
 function startHeartAnimation() {
 	var interval = 50;
 	var angle = 10;
