@@ -30,7 +30,7 @@
         #content {
             width: 100% !important;
             display: flex;
-            flex-direction: column; /* Stacked for Mobile */
+            flex-direction: column; 
             align-items: center;
             padding: 15px;
             box-sizing: border-box;
@@ -48,15 +48,18 @@
             height: auto !important;
         }
 
+        /* 1. FIXED HEART VISIBILITY & SIZE */
         #loveHeart {
             position: relative !important;
-            width: 320px !important; /* Standard mobile width */
-            height: 310px !important;
+            width: 320px !important; /* Forces heart to fit mobile screen */
+            height: 300px !important;
             margin: 20px auto !important;
             top: 0 !important;
             left: 0 !important;
-            opacity: 0; /* Hidden until text finishes */
+            opacity: 0; /* Hidden until text is typed */
             transition: opacity 1.5s; 
+            display: block !important;
+            visibility: visible !important;
         }
 
         #garden {
@@ -64,25 +67,29 @@
             height: 100% !important;
         }
 
+        /* 2. PROPORTIONAL CLOCK & TEXT */
         #words {
             position: absolute !important;
             width: 100% !important;
             top: 50% !important;
             left: 50% !important;
-            transform: translate(-50%, -55%);
+            transform: translate(-50%, -50%); /* Centers text perfectly inside heart */
             text-align: center;
             margin: 0 !important;
+            z-index: 100;
         }
 
         #messages {
             font-size: 14px !important;
             color: #666;
+            line-height: 1.2;
         }
 
         #elapseClock {
-            font-size: 14px !important;
+            font-size: 13px !important; /* Smaller size for mobile screens */
             font-family: "digit", sans-serif;
-            margin-top: 5px;
+            margin-top: 8px;
+            white-space: nowrap;
         }
 
         #loveu {
@@ -100,16 +107,10 @@
 
         .comments { color: #236a25; font-style: italic; }
 
-        /* Desktop view: Side by side */
         @media only screen and (min-width: 768px) {
-            #content {
-                flex-direction: row;
-                justify-content: center;
-                align-items: flex-start;
-                padding-top: 50px;
-            }
+            #content { flex-direction: row; justify-content: center; align-items: flex-start; padding-top: 50px; }
             #code { width: 440px !important; margin-right: 40px !important; }
-            #loveHeart { width: 670px !important; height: 625px !important; margin: 0 !important; opacity: 1; }
+            #loveHeart { width: 670px !important; height: 625px !important; opacity: 1; }
             #messages { font-size: 24px !important; }
             #elapseClock { font-size: 20px !important; }
         }
@@ -164,9 +165,9 @@
     </div>
 
     <script type="text/javascript">
-        // Calculate dynamic heart offsets
-        var offsetX = $("#loveHeart").width() / 2;
-        var offsetY = $("#loveHeart").height() / 2 - 20; 
+        // Important: Recalculate heart center based on the mobile container
+        var offsetX = 160; // Half of 320px
+        var offsetY = 140; // Adjusted for better vertical centering
         
         var together = new Date();
         together.setFullYear(2024, 3, 30);
@@ -176,27 +177,19 @@
         together.setMilliseconds(0);
 
         if (!document.createElement('canvas').getContext) {
-            var msg = document.createElement("div");
-            msg.id = "errorMsg";
-            msg.innerHTML = "Your browser doesn't support HTML5!";
-            document.body.appendChild(msg);
             $("#code").css("display", "none");
         } else {
-            // Start the time clock immediately
             timeElapse(together);
             setInterval(function () {
                 timeElapse(together);
             }, 500);
 
-            // Start Typewriter and call Heart Animation only when finished
+            // SYNC FIX: Start heart ONLY when typewriter is done
             $("#code").typewriter(function() {
-                // Smoothly fade in the heart div
                 $("#loveHeart").css("opacity", "1");
-                
-                // Slight delay before garden starts growing to ensure layout is settled
                 setTimeout(function () {
                     startHeartAnimation();
-                }, 500);
+                }, 300);
             });
         }
     </script>
