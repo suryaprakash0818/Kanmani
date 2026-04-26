@@ -12,12 +12,12 @@
             src: url('digital-7_mono.ttf') format("truetype");
         }
 
-        /* 2. RESPONSIVE FIXES */
         body {
             margin: 0;
             padding: 0;
-            background: #ffe; /* Match your theme background */
-            overflow-x: hidden; /* Prevent horizontal scrolling */
+            background: #ffe;
+            overflow-x: hidden;
+            font-family: "Helvetica", "Arial", sans-serif;
         }
 
         #mainDiv {
@@ -28,58 +28,89 @@
 
         #content {
             width: 100% !important;
-            height: auto !important;
-            margin: 0 !important;
             display: flex;
-            flex-direction: column; /* Stack code above heart on mobile */
+            flex-direction: column; /* Text on top, Heart on bottom */
             align-items: center;
+            padding: 10px;
+            box-sizing: border-box;
         }
 
         #code {
-            position: relative !important;
-            width: 90% !important;
+            position: relative !important; /* Overrides the JS positioning */
+            width: 95% !important;
+            max-width: 600px;
             margin: 20px auto !important;
             top: 0 !important;
             left: 0 !important;
-            font-size: 14px !important;
-            line-height: 1.5 !important;
+            font-size: 15px !important;
+            line-height: 1.6 !important;
             height: auto !important;
+            color: #333;
         }
 
         #loveHeart {
             position: relative !important;
-            width: 100% !important;
-            max-width: 350px; /* Keeps heart sized for phones */
-            height: 350px !important;
-            margin: 0 auto !important;
+            width: 320px !important; /* Perfect size for mobile width */
+            height: 310px !important;
+            margin: 20px auto !important;
             top: 0 !important;
             left: 0 !important;
         }
 
-        /* Adjust the heart animation container */
         #garden {
             width: 100% !important;
             height: 100% !important;
         }
 
+        /* Centering the text inside the animated heart */
         #words {
-            font-size: 12px !important;
+            position: absolute !important;
+            width: 100% !important;
+            top: 50% !important;
+            left: 50% !important;
+            transform: translate(-50%, -55%); /* Centers the text block */
+            text-align: center;
+            margin: 0 !important;
         }
 
-        #icon {
-            font-size: 50px;
-            color: red;
+        #messages {
+            font-size: 14px !important;
+            color: #666;
+        }
+
+        #elapseClock {
+            font-size: 14px !important;
+            font-family: "digit", sans-serif;
+            margin-top: 5px;
+        }
+
+        #loveu {
+            font-size: 12px !important;
             margin-top: 10px;
         }
 
-        /* Desktop view: Side by side */
+        #icon {
+            font-size: 60px;
+            color: #ff4d4d;
+            display: block;
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        .comments { color: #236a25; font-style: italic; }
+
+        /* Desktop view: Switch to side-by-side */
         @media only screen and (min-width: 768px) {
             #content {
                 flex-direction: row;
                 justify-content: center;
+                align-items: flex-start;
+                padding-top: 50px;
             }
-            #code { width: 440px !important; }
-            #loveHeart { width: 670px !important; height: 625px !important; }
+            #code { width: 440px !important; margin-right: 30px !important; }
+            #loveHeart { width: 670px !important; height: 625px !important; margin: 0 !important; }
+            #messages { font-size: 24px !important; }
+            #elapseClock { font-size: 20px !important; }
         }
     </style>
     
@@ -96,19 +127,22 @@
                 <span class="comments">/**</span><br />
                 <span class="space"/><span class="comments">* THE CODE OF LOVE</span><br />
                 <span class="space"/><span class="comments">*/</span><br />
-                My dear KanMani !<br /><br />
-		<p>
-		I miss your voice more than I can put into words. I miss our time together at the office—the little moments, the smiles we shared, and the comfort of just having you 			around. I miss our food dates, the way every meal felt special because it was with you, and our bike rides across OMR and ECR, where it felt like the world slowed down just 		for us. I miss our nights together—watching movies, talking endlessly, and simply lying beside you for hours. Those moments meant everything to me. More than anything, I 		miss your presence… and your voice, the one thing that always made everything feel right.
-		</p>
-		<p>
-		I need you, KanMani. My heart aches for you in a way I’ve never felt before. Not even a single minute passes without you crossing my mind. You’re in everything I do, 			everything I feel.
-		I love you and I truly hope that one day, we find our way back to each other—to create countless more memories, to love deeply, and to stay together for a lifetime.	
-		</p>
+                <strong>My dear KanMani !</strong><br /><br />
+                <p>
+                    I miss your voice more than I can put into words. I miss our time together at the office—the little moments, the smiles we shared, and the comfort of just having you around. I miss our food dates, the way every meal felt special because it was with you, and our bike rides across OMR and ECR, where it felt like the world slowed down just for us.
+                </p>
+                <p>
+                    I miss our nights together—watching movies, talking endlessly, and simply lying beside you for hours. Those moments meant everything to me. More than anything, I miss your presence… and your voice, the one thing that always made everything feel right.
+                </p>
+                <p>
+                    I need you, KanMani. My heart aches for you in a way I’ve never felt before. Not even a single minute passes without you crossing my mind. You’re in everything I do, everything I feel.
+                    I love you and I truly hope that one day, we find our way back to each other—to create countless more memories, to love deeply, and to stay together for a lifetime.    
+                </p>
                 All I want to say is:<br />
-                Pattu, I will love you forever;<br /><br />
-                Now If you want to hug me you can touch the heart below<br /><br />
+                <strong>Pattu, I will love you forever;</strong><br /><br />
+                Now if you want to hug me, you can touch the heart below.<br />
                 <span id="heartspan">
-                    <a href="image.jpeg"><i class="fas fa-heart" id="icon"></i></a>
+                    <a href="image.jpeg" style="text-decoration:none;"><i class="fas fa-heart" id="icon"></i></a>
                 </span>
             </div>
             
@@ -129,7 +163,6 @@
     </div>
 
     <script type="text/javascript">
-        // Dynamic centering for the heart based on the smaller mobile container
         var offsetX = $("#loveHeart").width() / 2;
         var offsetY = $("#loveHeart").height() / 2 - 20; 
         
@@ -149,14 +182,16 @@
         } else {
             setTimeout(function () {
                 startHeartAnimation();
-            }, 2000); // Reduced delay for faster mobile loading
+            }, 1000); 
 
             timeElapse(together);
             setInterval(function () {
                 timeElapse(together);
             }, 500);
 
-            adjustCodePosition();
+            // CRITICAL: Commented out to prevent JS from overriding our mobile layout
+            // adjustCodePosition(); 
+            
             $("#code").typewriter();
         }
     </script>
