@@ -18,6 +18,7 @@
             background: #ffe;
             overflow-x: hidden;
             font-family: "Helvetica", "Arial", sans-serif;
+            color: #333;
         }
 
         #mainDiv {
@@ -29,32 +30,33 @@
         #content {
             width: 100% !important;
             display: flex;
-            flex-direction: column; /* Text on top, Heart on bottom */
+            flex-direction: column; /* Stacked for Mobile */
             align-items: center;
-            padding: 10px;
+            padding: 15px;
             box-sizing: border-box;
         }
 
         #code {
-            position: relative !important; /* Overrides the JS positioning */
+            position: relative !important;
             width: 95% !important;
             max-width: 600px;
-            margin: 20px auto !important;
+            margin: 10px auto !important;
             top: 0 !important;
             left: 0 !important;
             font-size: 15px !important;
             line-height: 1.6 !important;
             height: auto !important;
-            color: #333;
         }
 
         #loveHeart {
             position: relative !important;
-            width: 320px !important; /* Perfect size for mobile width */
+            width: 320px !important; /* Standard mobile width */
             height: 310px !important;
             margin: 20px auto !important;
             top: 0 !important;
             left: 0 !important;
+            opacity: 0; /* Hidden until text finishes */
+            transition: opacity 1.5s; 
         }
 
         #garden {
@@ -62,13 +64,12 @@
             height: 100% !important;
         }
 
-        /* Centering the text inside the animated heart */
         #words {
             position: absolute !important;
             width: 100% !important;
             top: 50% !important;
             left: 50% !important;
-            transform: translate(-50%, -55%); /* Centers the text block */
+            transform: translate(-50%, -55%);
             text-align: center;
             margin: 0 !important;
         }
@@ -90,16 +91,16 @@
         }
 
         #icon {
-            font-size: 60px;
+            font-size: 55px;
             color: #ff4d4d;
             display: block;
-            margin: 20px auto;
+            margin: 15px auto;
             text-align: center;
         }
 
         .comments { color: #236a25; font-style: italic; }
 
-        /* Desktop view: Switch to side-by-side */
+        /* Desktop view: Side by side */
         @media only screen and (min-width: 768px) {
             #content {
                 flex-direction: row;
@@ -107,8 +108,8 @@
                 align-items: flex-start;
                 padding-top: 50px;
             }
-            #code { width: 440px !important; margin-right: 30px !important; }
-            #loveHeart { width: 670px !important; height: 625px !important; margin: 0 !important; }
+            #code { width: 440px !important; margin-right: 40px !important; }
+            #loveHeart { width: 670px !important; height: 625px !important; margin: 0 !important; opacity: 1; }
             #messages { font-size: 24px !important; }
             #elapseClock { font-size: 20px !important; }
         }
@@ -163,6 +164,7 @@
     </div>
 
     <script type="text/javascript">
+        // Calculate dynamic heart offsets
         var offsetX = $("#loveHeart").width() / 2;
         var offsetY = $("#loveHeart").height() / 2 - 20; 
         
@@ -180,19 +182,22 @@
             document.body.appendChild(msg);
             $("#code").css("display", "none");
         } else {
-            setTimeout(function () {
-                startHeartAnimation();
-            }, 1000); 
-
+            // Start the time clock immediately
             timeElapse(together);
             setInterval(function () {
                 timeElapse(together);
             }, 500);
 
-            // CRITICAL: Commented out to prevent JS from overriding our mobile layout
-            // adjustCodePosition(); 
-            
-            $("#code").typewriter();
+            // Start Typewriter and call Heart Animation only when finished
+            $("#code").typewriter(function() {
+                // Smoothly fade in the heart div
+                $("#loveHeart").css("opacity", "1");
+                
+                // Slight delay before garden starts growing to ensure layout is settled
+                setTimeout(function () {
+                    startHeartAnimation();
+                }, 500);
+            });
         }
     </script>
 </body>
