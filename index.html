@@ -1,164 +1,93 @@
-<!DOCTYPE html>
-<html>
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <script src="https://kit.fontawesome.com/a14ae32021.js" crossorigin="anonymous"></script>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Missing you my KanMani</title>
+<script src="https://kit.fontawesome.com/a14ae32021.js" crossorigin="anonymous"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Missing you my KanMani</title>
 
-    <style type="text/css">
-        @font-face {
-            font-family: digit;
-            src: url('digital-7_mono.ttf') format("truetype");
-        }
+<style type="text/css">
+@font-face {
+	font-family: digit;
+	src: url('digital-7_mono.ttf') format("truetype");
+}
+</style>
+<link href="css/default.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/garden.js"></script>
+<script type="text/javascript" src="js/functions.js"></script>
 
-        /* 2. RESPONSIVE FIXES */
-        body {
-            margin: 0;
-            padding: 0;
-            background: #ffe; /* Match your theme background */
-            overflow-x: hidden; /* Prevent horizontal scrolling */
-        }
-
-        #mainDiv {
-            width: 100%;
-            height: auto !important;
-            min-height: 100vh;
-        }
-
-        #content {
-            width: 100% !important;
-            height: auto !important;
-            margin: 0 !important;
-            display: flex;
-            flex-direction: column; /* Stack code above heart on mobile */
-            align-items: center;
-        }
-
-        #code {
-            position: relative !important;
-            width: 90% !important;
-            margin: 20px auto !important;
-            top: 0 !important;
-            left: 0 !important;
-            font-size: 14px !important;
-            line-height: 1.5 !important;
-            height: auto !important;
-        }
-
-        #loveHeart {
-            position: relative !important;
-            width: 100% !important;
-            max-width: 350px; /* Keeps heart sized for phones */
-            height: 350px !important;
-            margin: 0 auto !important;
-            top: 0 !important;
-            left: 0 !important;
-        }
-
-        /* Adjust the heart animation container */
-        #garden {
-            width: 100% !important;
-            height: 100% !important;
-        }
-
-        #words {
-            font-size: 12px !important;
-        }
-
-        #icon {
-            font-size: 50px;
-            color: red;
-            margin-top: 10px;
-        }
-
-        /* Desktop view: Side by side */
-        @media only screen and (min-width: 768px) {
-            #content {
-                flex-direction: row;
-                justify-content: center;
-            }
-            #code { width: 440px !important; }
-            #loveHeart { width: 670px !important; height: 625px !important; }
-        }
-    </style>
-    
-    <link href="css/default.css" type="text/css" rel="stylesheet">
-    <script type="text/javascript" src="js/jquery.js"></script>
-    <script type="text/javascript" src="js/garden.js"></script>
-    <script type="text/javascript" src="js/functions.js"></script>
 </head>
 
 <body>
-    <div id="mainDiv">
-        <div id="content">
-            <div id="code">
-                <span class="comments">/**</span><br />
-                <span class="space"/><span class="comments">* THE CODE OF LOVE</span><br />
-                <span class="space"/><span class="comments">*/</span><br />
-                My dear KanMani !<br /><br />
-		<p>
-		I miss your voice more than I can put into words. I miss our time together at the office—the little moments, the smiles we shared, and the comfort of just having you 			around. I miss our food dates, the way every meal felt special because it was with you, and our bike rides across OMR and ECR, where it felt like the world slowed down just 		for us. I miss our nights together—watching movies, talking endlessly, and simply lying beside you for hours. Those moments meant everything to me. More than anything, I 		miss your presence… and your voice, the one thing that always made everything feel right.
-		</p>
-		<p>
-		I need you, KanMani. My heart aches for you in a way I’ve never felt before. Not even a single minute passes without you crossing my mind. You’re in everything I do, 			everything I feel.
-		I love you and I truly hope that one day, we find our way back to each other—to create countless more memories, to love deeply, and to stay together for a lifetime.	
-		</p>
-                All I want to say is:<br />
-                Pattu, I will love you forever;<br /><br />
-                Now If you want to hug me you can touch the heart below<br /><br />
-                <span id="heartspan">
-                    <a href="image.jpeg"><i class="fas fa-heart" id="icon"></i></a>
-                </span>
-            </div>
-            
-            <div id="loveHeart">
-                <canvas id="garden"></canvas>
-                <div id="words">
-                    <div id="messages">
-                        US FOREVER
-                        <div id="elapseClock"></div>
-                    </div>
-                    <div id="loveu">
-                        I LOVE YOU SO MUCH<br/>
-                        <div class="signature">- SURYA </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <script type="text/javascript">
-        // Dynamic centering for the heart based on the smaller mobile container
-        var offsetX = $("#loveHeart").width() / 2;
-        var offsetY = $("#loveHeart").height() / 2 - 20; 
-        
-        var together = new Date();
-        together.setFullYear(2024, 3, 30);
-        together.setHours(13);
-        together.setMinutes(30);
-        together.setSeconds(0);
-        together.setMilliseconds(0);
+<div id="mainDiv">
+	<div id="content">
+		<div id="code">
+			<span class="comments">/**</span><br />
+			<span class="space"/><span class="comments">*THE CODE OF LOVE</span><br />
+			<span class="space"/><span class="comments">*/</span><br />
+			My dear KanMani !<br />
+			<br />
+			<br>
+			<br>
+			All I want to say is:<br />
+			Pattu, I will love you forever;<br />
+			<br>
+			<br>
+			Now If you want to hug me you can touch the heart below<br />
+			<br>
+			<span id="heartspan">
+			<a href="image.jpeg"><i class="fas fa-heart" id="icon"></i></a>
+			</span>
+		</div>
+		<div id="loveHeart">
+			<canvas id="garden"></canvas>
+			<div id="words">
+				<div id="messages">
+					US FOREVER
+					<div id="elapseClock"></div>
+				</div>
+				<div id="loveu">
+					I LOVE YOU SO MUCH<br/>
+					<div class="signature">- SURYA </div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 
-        if (!document.createElement('canvas').getContext) {
-            var msg = document.createElement("div");
-            msg.id = "errorMsg";
-            msg.innerHTML = "Your browser doesn't support HTML5!";
-            document.body.appendChild(msg);
-            $("#code").css("display", "none");
-        } else {
-            setTimeout(function () {
-                startHeartAnimation();
-            }, 2000); // Reduced delay for faster mobile loading
+<script type="text/javascript">
+var offsetX = $("#loveHeart").width() / 2;
+var offsetY = $("#loveHeart").height() / 2 - 55;
+var together = new Date();
+together.setFullYear(2024, 3, 30);
+together.setHours(13);
+together.setMinutes(30);
+together.setSeconds(0);
+together.setMilliseconds(0);
 
-            timeElapse(together);
-            setInterval(function () {
-                timeElapse(together);
-            }, 500);
+if (!document.createElement('canvas').getContext) {
+	var msg = document.createElement("div");
+	msg.id = "errorMsg";
+	msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+"; 
+	document.body.appendChild(msg);
+	$("#code").css("display", "none")
+	$("#copyright").css("position", "absolute");
+	$("#copyright").css("bottom", "10px");
+	document.execCommand("stop");
+} else {
+	setTimeout(function () {
+		startHeartAnimation();
+	}, 5000);
 
-            adjustCodePosition();
-            $("#code").typewriter();
-        }
-    </script>
+	timeElapse(together);
+	setInterval(function () {
+		timeElapse(together);
+	}, 500);
+
+	adjustCodePosition();
+	$("#code").typewriter();
+}
+</script>
 </body>
 </html>
